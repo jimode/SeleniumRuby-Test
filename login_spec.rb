@@ -1,9 +1,12 @@
 require 'selenium-webdriver'
+require_relative 'login'
 
 describe "Login" do
 	
 	before(:each) do
 		@driver = Selenium::WebDriver.for :firefox
+		ENV['base_url'] = 'http://the-internet.herokuapp.com'
+		@login = Login.new(@driver) # instantiate a login object of the class: Login
 	end
 
 	after(:each) do
@@ -11,10 +14,7 @@ describe "Login" do
 	end
 
 	it "succeeded" do
-		@driver.get 'http://the-internet.herokuapp.com/login'
-		@driver.find_element(id: 'username').send_keys('tomsmith')
-		@driver.find_element(id: 'password').send_keys('SuperSecretPassword!')
-		@driver.find_element(id: 'login').submit
-		@driver.find_element(css: '.flash.success').displayed?.should be_true
+		@login.with('tomsmith', 'SuperSecretPassword!')
+		expect(@login.success_message_present?).to be_truthy
 	end
 end
