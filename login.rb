@@ -1,4 +1,7 @@
-class Login
+require_relative 'base_page'
+
+class Login < BasePage
+
 	# Login Page Object.
 
 	LOGIN_FORM = { id: 'login' }
@@ -8,25 +11,25 @@ class Login
 	FAILURE_MESSAGE = { css: '.flash.error'}
 
 	def initialize(driver)
-		@driver = driver
-		@driver.get ENV['base_url'] + '/login'
-		@driver.find_element(LOGIN_FORM).displayed?.should == true
+		super # use inherited method from base_page class
+		visit '/login'		
+		is_displayed?(LOGIN_FORM).should == true
 		# assertion deprecated, find correct one.
 	end
 
 	def with(username, password)
-		@driver.find_element(USERNAME_INPUT).send_keys(username)
-		@driver.find_element(PASSWORD_INPUT).send_keys(password)
-		@driver.find_element(LOGIN_FORM).submit
+		type username, USERNAME_INPUT
+		type password, PASSWORD_INPUT
+		submit LOGIN_FORM
 	end
 
 
 	def success_message_present?
-		@driver.find_element(SUCCESS_MESSAGE).displayed?
+		is_displayed? SUCCESS_MESSAGE
 	end
 
 	def failure_message_present?
-		@driver.find_element(FAILURE_MESSAGE).displayed?
+		is_displayed? FAILURE_MESSAGE
 	end
 
 end

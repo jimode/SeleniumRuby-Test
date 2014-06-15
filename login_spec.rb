@@ -1,4 +1,4 @@
-require 'selenium-webdriver'
+# require 'selenium-webdriver'
 require_relative 'login'
 
 describe "Login" do
