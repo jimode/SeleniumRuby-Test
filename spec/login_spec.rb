@@ -1,17 +1,19 @@
 # require 'selenium-webdriver'
-require_relative 'login'
+
+require_relative 'spec_helper'
+require_relative '../pages/login'
 
 describe "Login" do
 	
 	before(:each) do
-		@driver = Selenium::WebDriver.for :firefox
-		ENV['base_url'] = 'http://the-internet.herokuapp.com'
+		# @driver = Selenium::WebDriver.for :firefox
+		# ENV['base_url'] = 'http://the-internet.herokuapp.com'
 		@login = Login.new(@driver) # instantiate a login object of the class: Login
 	end
 
-	after(:each) do
-		@driver.quit
-	end
+	# after(:each) do
+	# 	@driver.quit
+	# end
 
 	it "succeeded" do
 		@login.with('tomsmith', 'SuperSecretPassword!')
