@@ -1,4 +1,4 @@
-# Ignore.
+# add to .gitignore.
 require 'sauce_whisk'
 require 'sauce'
 
