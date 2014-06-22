@@ -1,4 +1,4 @@
 # Ignore these files.
 .DS_Store
-/config_cloud.rb spec
+./config_cloud.rb spec
 *.log
