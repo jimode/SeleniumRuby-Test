@@ -8,7 +8,7 @@ RSpec.configure do |config|
       caps = Selenium::WebDriver::Remote::Capabilities.send(ENV['browser'])
       caps.version = ENV['browser_version']
       caps.platform = ENV['operating_system']
-      caps[:name] = example.metadata[:full_description]
+      # caps[:name] = example.metadata[:full_description]
 
       @driver = Selenium::WebDriver.for(
         :remote,
