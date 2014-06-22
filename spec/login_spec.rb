@@ -17,12 +17,14 @@ describe "Login" do
 
 	it "succeeded" do
 		@login.with('tomsmith', 'SuperSecretPassword!')
-		expect(@login.success_message_present?).to be_truthy
+		@login.success_message_present?.should be_true
+		# expect(@login.success_message_present?).to be_truthy
 	end
 
 	it "failed" do
 		@login.with('asdf', 'asdf')
-		expect(@login.failure_message_present?).to be_truthy
+		@login.failure_message_present?.should be_true
+		# expect(@login.failure_message_present?).to be_truthy
 		# expect(@login.failure_message_present?).to be_false
 
 	end
