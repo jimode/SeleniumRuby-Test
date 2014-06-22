@@ -26,7 +26,16 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
+    if ENV['host'] == 'saucelabs'
+      if example.exception.nil?
+        SauceWhisk::Jobs.pass_job @driver.session_id
+      else
+        SauceWhisk::Jobs.fail_job @driver.session_id
+      end
+    end
+
     @driver.quit
+    
   end
 
 end

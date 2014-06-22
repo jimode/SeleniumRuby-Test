@@ -1,4 +1,4 @@
-# require 'sauce_whisk'
+require 'sauce_whisk'
 
 ENV['base_url']			||= 'http://the-internet.herokuapp.com'
 ENV['host'] 			= 'saucelabs'
