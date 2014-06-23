@@ -56,7 +56,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  parallel_tests
   rspec (~> 2.14.0)
   sauce
   sauce-connect
+  sauce_whisk
   selenium-webdriver
