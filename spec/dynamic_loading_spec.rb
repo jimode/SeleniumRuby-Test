@@ -3,7 +3,7 @@ require_relative 'spec_helper'
 require_relative '../pages/dynamic_loading'
 
 
-describe "Dynamic Loading" do
+describe "Dynamic Loading", depth: 'shallow' do
 	
 	before(:each) do
 		# @driver = Selenium::WebDriver.for :firefox

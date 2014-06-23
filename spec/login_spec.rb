@@ -3,7 +3,7 @@
 require_relative 'spec_helper'
 require_relative '../pages/login'
 
-describe "Login" do
+describe "Login", depth: 'shallow' do
 	
 	before(:each) do
 		# @driver = Selenium::WebDriver.for :firefox
