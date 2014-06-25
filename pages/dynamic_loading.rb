@@ -13,7 +13,7 @@ class DynamicLoading < BasePage
 		click START_BUTTON
 	end
 
-	def finish_text_present?
+	def finish_text?
 		wait_for(10) { is_displayed? FINISH_TEXT }
 	end
 

@@ -17,15 +17,16 @@ describe "Login", depth: 'shallow' do
 
 	it "succeeded" do
 		@login.with('tomsmith', 'SuperSecretPassword!')
-		@login.success_message_present?.should be_true
-		# expect(@login.success_message_present?).to be_truthy
+		@login.success_message?.should be_displayed
 	end
 
 	it "failed" do
 		@login.with('asdf', 'asdf')
-		@login.failure_message_present?.should be_true
-		# expect(@login.failure_message_present?).to be_truthy
-		# expect(@login.failure_message_present?).to be_false
+		@login.failure_message?.should be_displayed
+	end
 
+	it "forced failure" do
+		@login.with('asdf', 'asdf')
+		@login.failure_message?.should_not be_displayed
 	end
 end

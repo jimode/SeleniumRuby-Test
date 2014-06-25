@@ -1,4 +1,5 @@
 require 'selenium-webdriver'
+require_relative 'support/matchers'
 
 RSpec.configure do |config|
 
@@ -22,6 +23,11 @@ RSpec.configure do |config|
         Selenium::WebDriver::Chrome::Service.executable_path = File.join(Dir.pwd, 'vendor/chromedriver')
         @driver = Selenium::WebDriver.for :chrome
       end
+    end
+    if ENV['host'] == 'saucelabs'
+      $job_message = "Watch a video of the test at https://saucelabs.com/tests/#{@driver.session_id}"
+    else
+      $job_message = ""
     end
   end
 
